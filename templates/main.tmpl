@@ -1,0 +1,147 @@
+<!--
+vim: et ts=2 sts=2 sw=2:
+-->
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="description" content="{{ SITE_TAGLINE }}">
+    <meta name="author" content="{{ AUTHOR }}">
+
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+    <title>{% block entry %}{% ifdef TITLE %}{{ TITLE }} &middot {% endif %}{% endblock %}{{ SITE_TITLE }}{% block listing_once %} &middot {{ SITE_TAGLINE }}{% endblock %}</title>
+
+    <!-- CSS -->
+    <link href="{{ BASE_URL }}/assets/css/poole.css" rel="stylesheet" type="text/css">
+    <link href="{{ BASE_URL }}/assets/css/syntax.css" rel="stylesheet" type="text/css">
+    <link href="{{ BASE_URL }}/assets/css/lanyon.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ BASE_URL }}/assets/apple-touch-icon-precomposed.png">
+    <link rel="shortcut icon" href="{{ BASE_URL }}/assets/favicon.ico">
+
+    <!-- RSS -->
+    <link href="{{ BASE_URL }}/atom.xml" rel="alternate" type="application/atom+xml" title="{{ SITE_TITLE }}" />
+
+  </head>
+  <body>
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+       styles, `#sidebar-checkbox` for behavior. -->
+    <input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+    <!-- Toggleable sidebar -->
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-item">
+      <p>{{ SITE_DESCRIPTION }}</p>
+      </div>
+
+      <nav class="sidebar-nav">
+      <!-- Home link -->
+      <a class="sidebar-nav-item{%if MENU == "blog" %} active{% endif %}" href="{{ BASE_URL }}/">Home</a>
+      <!-- About link -->
+      <a class="sidebar-nav-item{%if MENU == "about" %} active{% endif %}" href="{{ BASE_URL }}/about/">About</a>
+
+      <a class="sidebar-nav-item" href="https://github.com/shiba89/lanyon-blogc/archive/master.zip">Download</a>
+      <a class="sidebar-nav-item" href="https://github.com/shiba89/lanyon-blogc">GitHub project</a>
+      <span class="sidebar-nav-item">Currently devel</span>
+      </nav>
+
+      <div class="sidebar-item">
+      <p>
+        &copy; 2015. All rights reserved.
+      </p>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="{{ BASE_URL }}/" title="Home">{{ SITE_TITLE }}</a>
+            <small>{{ SITE_TAGLINE }}</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        {% block listing_once %}
+        <div class="posts">
+        {% endblock %}
+          {% block listing %}
+          <div class="post">
+            <h1 class="post-title">
+              <a href="{{ BASE_URL }}/post/{{ FILENAME }}/">{{ TITLE }}</a>
+            </h1>
+            <span class="post-date">
+              {% ifdef DATE_FORMATTED %}{{ DATE_FORMATTED }}{% endif %}
+            </span>
+            {{ CONTENT }}
+          </div>
+          {% endblock %}
+          {% block listing_once %}
+          <div class="pagination">
+            {% ifdef NEXT_PAGE %}
+            <a class="pagination-item older" href="{{ BASE_URL }}/page/{{ NEXT_PAGE }}">Older</a>
+            {% endif %}
+            {% ifndef NEXT_PAGE %}
+            <span class="pagination-item older">Older</span>
+            {% endif %}
+            {% ifdef PREVIOUS_PAGE %}
+            <a class="pagination-item newer" href="{{ BASE_URL }}/page/{{ PREVIOUS_PAGE }}">Newer</a>
+            {% endif %}
+            {% ifndef PREVIOUS_PAGE %}
+            <span class="pagination-item newer">Newer</span>
+            {% endif %}
+          </div>
+        </div>
+          {% endblock %}
+
+        {% block entry %}
+        {% ifdef IS_POST %}
+        <div class="posts">
+          <div class="post">
+            <h1 class="post-title">{{ TITLE }}</h1>
+            <span class="post-date">
+              {% ifdef DATE_FORMATTED %}{{ DATE_FORMATTED }}{% endif %}
+            </span>
+            {{ CONTENT }}
+          </div>
+        </div>
+        {% endif %}
+
+        {% ifndef IS_POST %}
+        <div class="page">
+          <h1 class="page-title">{{ TITLE }}</h1>
+          {{ CONTENT }}
+        </div>
+        {% endif %}
+        {% endblock %}
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+  </body>
+</html>
