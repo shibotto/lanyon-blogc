@@ -4,7 +4,7 @@ AUTHOR_NAME = "Shiba"
 AUTHOR_EMAIL = "example@email.com"
 SITE_TITLE = "Lanyon"
 SITE_TAGLINE = "Now for blogc too!"
-SITE_DESCRIPTION = "A reserved <a href="http://jekyllrb.com" target="_blank">Jekyll</a> theme that places the utmost gravity on content with a hidden drawer. Made by <a href="https://twitter.com/mdo" target="_blank">@mdo</a>.<br>Ported to <a href="http://blogc.org/">blogc</a> by Shiba."
+SITE_DESCRIPTION = "A reserved <a href=\"http://jekyllrb.com\" target=\"_blank\">Jekyll</a> theme that places the utmost gravity on content with a hidden drawer. Made by <a href=\"https://twitter.com/mdo\" target=\"_blank\">@mdo</a>.<br>Ported to <a href=\"http://blogc.org/\">blogc</a> by Shiba."
 LOCALE = "en_US.utf-8"
 
 POSTS_PER_PAGE = 5
@@ -108,6 +108,8 @@ $(OUTPUT_DIR)/atom.xml: $(addprefix content/post/, $(addsuffix .md, $(POSTS))) t
 		-o $@ \
 		-t templates/atom.tmpl \
 		$(addprefix content/post/, $(addsuffix .md, $(POSTS)))
+
+IS_POST = 0
 
 $(OUTPUT_DIR)/post/%/index.html: MENU = blog
 $(OUTPUT_DIR)/post/%/index.html: IS_POST = 1
