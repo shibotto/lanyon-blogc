@@ -42,9 +42,9 @@ vim: et ts=2 sts=2 sw=2:
 
       <nav class="sidebar-nav">
       <!-- Home link -->
-      <a class="sidebar-nav-item{%if MENU == "blog" %} active{% endif %}" href="{{ BASE_URL }}/">Home</a>
+      <a class="sidebar-nav-item{%if MENU == "blog" %} active{% endif %}{% if BM_TYPE == "post" %} active{% endif %}" href="{{ BASE_URL }}/">Home</a>
       <!-- About link -->
-      <a class="sidebar-nav-item{%if MENU == "about" %} active{% endif %}" href="{{ BASE_URL }}/about/">About</a>
+      <a class="sidebar-nav-item{%if MENU == "about" %} active{% endif %}{% if BM_TYPE == "page" %}{% if FILENAME == "about" %} active{% endif %}{% endif %}" href="{{ BASE_URL }}/about/">About</a>
 
       <a class="sidebar-nav-item" href="https://github.com/shiba89/lanyon-blogc/archive/master.zip">Download</a>
       <a class="sidebar-nav-item" href="https://github.com/shiba89/lanyon-blogc">GitHub project</a>
