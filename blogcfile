@@ -1,0 +1,30 @@
+[environment]
+AUTHOR_NAME = "Shiba"
+AUTHOR_EMAIL = "example@email.com"
+SITE_TITLE = "Lanyon"
+SITE_TAGLINE = "Now for blogc too!"
+SITE_DESCRIPTION = "A reserved <a href=\"http://jekyllrb.com\" target=\"_blank\">Jekyll</a> theme that places the utmost gravity on content with a hidden drawer. Made by <a href=\"https://twitter.com/mdo\" target=\"_blank\">@mdo</a>.<br>Ported to <a href=\"http://blogc.org/\">blogc</a> by Shiba."
+BASE_DOMAIN = "http://example.com"
+
+[settings]
+locale = "en_US.utf-8"
+date_format = "%d %b %Y"
+posts_per_page = 5
+atom_posts_per_page = 10
+source_ext = .md
+
+[posts]
+2014-01-02-introducing-lanyon
+2014-01-01-example-content
+2013-12-31-whats-jekyll
+
+[pages]
+about
+404
+
+[copy_files]
+assets/css/poole.css
+assets/css/syntax.css
+assets/css/lanyon.css
+assets/apple-touch-icon-precomposed.png
+assets/favicon.ico
