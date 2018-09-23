@@ -1,6 +1,6 @@
 # Lanyon for blogc
 
-Lanyon is an unassuming [Jekyll](http://jekyllrb.com) theme that places content first by tucking away navigation in a hidden drawer. It's based on [Poole](http://getpoole.com), the Jekyll butler.
+[Lanyon](http://lanyon.getpoole.com/) is an unassuming [Jekyll](http://jekyllrb.com) theme that places content first by tucking away navigation in a hidden drawer. It's based on [Poole](http://getpoole.com), the Jekyll butler.
 
 This is the exact same theme ported to [blogc](http://blogc.org).
 
@@ -21,7 +21,7 @@ This is the exact same theme ported to [blogc](http://blogc.org).
 
 ## Usage
 
-Lanyon for blogc is ready to use, just run `make` in your terminal and you are good to go.
+Lanyon for blogc is ready to use, just run `blogc-make` in your terminal and you are good to go.
 
 
 ## Options
@@ -37,9 +37,9 @@ Relevant `templates/main.tmpl` parts:
 
 ```html
 <!-- Home link -->
-<a class="sidebar-nav-item{%if MENU == "blog" %} active{% endif %}" href="{{ BASE_URL }}/">Home</a>
+<a class="sidebar-nav-item{%if MAKE_RULE == "index" %} active{% endif %}" href="{{ BASE_URL }}/">Home</a>
 <!-- About link -->
-<a class="sidebar-nav-item{%if MENU == "about" %} active{% endif %}" href="{{ BASE_URL }}/about/">About</a>
+<a class="sidebar-nav-item{%if MAKE_SLUG == "about" %} active{% endif %}" href="{{ BASE_URL }}/about/">About</a>
 
 <a class="sidebar-nav-item" href="https://github.com/shiba89/lanyon-blogc/archive/master.zip">Download</a>
 <a class="sidebar-nav-item" href="https://github.com/shiba89/lanyon-blogc">GitHub project</a>
@@ -48,14 +48,10 @@ Relevant `templates/main.tmpl` parts:
 
 Relevant `Makefile` parts:
 
-```sh
-PAGES = \
-	about \
-	$(NULL)
-
-[...]
-
-$(OUTPUT_DIR)/about/index.html: MENU = about
+```desktop
+[pages]
+about
+404
 ```
 
 This will hopefully change in the future.
@@ -129,7 +125,7 @@ Show an open sidebar on page load by modifying the `<input>` to add the `checked
 You can also conditionally show the sidebar open on a per-page basis. For example, here's how you could have it open on the About page only:
 
 ```html
-<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox"{% if TITLE == "About" %} checked{% endif %}>
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox"{% if MAKE_SLUG == "about" %} checked{% endif %}>
 ```
 
 
