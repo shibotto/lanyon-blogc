@@ -14,9 +14,9 @@ atom_posts_per_page = 10
 source_ext = .md
 
 [posts]
-2014-01-02-introducing-lanyon
-2014-01-01-example-content
 2013-12-31-whats-jekyll
+2014-01-01-example-content
+2014-01-02-introducing-lanyon
 
 [pages]
 about
